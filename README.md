@@ -1,17 +1,21 @@
 ## Projet de recommandation de films avec PostgreSQL + pgvector
-## Projet de recommandation de films avec PostgreSQL + pgvector
 
-Ce projet a pour objectif de construire un système complet de **recommandation de films** basé sur des **embeddings** stockés dans PostgreSQL grâce à l’extension **pgvector**.  
-L’idée est de pouvoir recommander des films similaires à partir de leur **synopsis**, **genres**, **casting** et autres métadonnées, et d’exposer ces recommandations via une petite API.
+Ce projet met en place un **système de recommandation de films** basé sur des **embeddings vectoriels** stockés dans PostgreSQL grâce à l’extension **pgvector**.  
+Il couvre toute la chaîne : installation, ingestion de données, génération des embeddings, indexation HNSW, requêtes de similarité, évaluation et petite API de démonstration.
 
-### Objectifs principaux
+### Objectifs et périmètre
 
-- **Stocker les films** dans une base PostgreSQL (`films`).
-- **Générer des embeddings** de texte (titre + synopsis + genres + cast) avec un modèle type `sentence-transformers`.
-- **Indexer les embeddings** avec pgvector (index HNSW) pour des recherches rapides.
-- **Exécuter des requêtes de similarité** (films similaires, recherche sémantique).
-- **Proposer une API de démonstration** (FastAPI).
-- **Évaluer la pertinence** (precision@k, nDCG, A/B tests simples).
+- **Objectif principal** : recommander des films similaires via **recherche sémantique** sur embeddings à partir du **synopsis**, du **cast**, des **genres** et des **métadonnées**.
+- **Résultat attendu** :
+  - Une base PostgreSQL `filmsrec` avec l’extension `pgvector` activée.
+  - Un schéma comprenant les tables `films` et `film_embeddings` (type `vector(768)`).
+  - Des scripts d’**ingestion** (CSV / Hugging Face → PostgreSQL) et d’**embeddings** (Sentence Transformers).
+  - Un index **HNSW** pour les recherches de similarité rapides.
+  - Des **requêtes SQL** de recommandation (films similaires, recherche texte, filtres par genre/année).
+  - Une petite **API FastAPI** de démonstration.
+  - Une **évaluation de la pertinence** (Precision@K, nDCG, A/B tests simples).
+
+> Pour tous les détails d’**installation** (PostgreSQL, pgvector, Python, création de la base), voir le guide `INSTALLATION.md` à la racine du projet.
 
 ---
 
