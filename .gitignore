@@ -1,0 +1,30 @@
+# Fichiers de données volumineux (ne pas versionner)
+data/films.csv
+data/*.csv
+
+# Environnement virtuel
+.venv/
+venv/
+env/
+
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Variables d'environnement (ne JAMAIS commiter les tokens)
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
